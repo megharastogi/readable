@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: 1
+  grade: 1
+  content: MyText
+  ri: 1.5
+
+two:
+  book_id: 1
+  grade: 1
+  content: MyText
+  ri: 1.5

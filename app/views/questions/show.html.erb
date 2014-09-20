@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @question.book_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
+
+<p>
+  <strong>Ans1:</strong>
+  <%= @question.ans1 %>
+</p>
+
+<p>
+  <strong>Ans2:</strong>
+  <%= @question.ans2 %>
+</p>
+
+<p>
+  <strong>Ans3:</strong>
+  <%= @question.ans3 %>
+</p>
+
+<p>
+  <strong>Ans4:</strong>
+  <%= @question.ans4 %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

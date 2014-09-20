@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @book_version.book_id %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @book_version.grade %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @book_version.content %>
+</p>
+
+<p>
+  <strong>Ri:</strong>
+  <%= @book_version.ri %>
+</p>
+
+<%= link_to 'Edit', edit_book_version_path(@book_version) %> |
+<%= link_to 'Back', book_versions_path %>

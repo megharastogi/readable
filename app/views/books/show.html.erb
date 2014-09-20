@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @book.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @book.description %>
+</p>
+
+<p>
+  <strong>Ri:</strong>
+  <%= @book.ri %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @book.grade %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @book.content %>
+</p>
+
+
+<% @book.book_versions.each do |b|%>
+  <%=link_to "Link", book_version_path(b)%><br/>
+  <%= b.ri%><br/>
+  <%= b.grade%><br/>
+<% end %>
+
+
+<br/><br/>
+
+<% @book.questions.each do |q|%>
+  <%=link_to "edit", question_path(q)%><br/>
+  <%= q.content%><br/>
+  <%= q.ans1%><br/>
+  <%= q.ans2%><br/>
+  <%= q.ans3%><br/>
+  <%= q.ans4%><br/>
+
+<% end %>
+
+<%= link_to "Create New Question",new_question_path(:book_id => @book.id) %><br/>
+
+<%= link_to "Create New version",new_book_version_path(:book_id => @book.id) %><br/>
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
