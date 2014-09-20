@@ -1,5 +1,8 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_filter :teacher_only , only: [:edit,:update,:destroy]
 
   # GET /questions
   # GET /questions.json
@@ -62,6 +65,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def teacher_only
+    if current_user.role != "Teacher"
+      redirect_to books_path
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question

@@ -1,0 +1,13 @@
+
+<%if current_user %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
+<% end %>
+<br/>
+<%= current_user.name %>
+
+<br/>
+<br/>
+
+<% @books.each do |b|%>
+	<%=b.name%>
+<% end %>

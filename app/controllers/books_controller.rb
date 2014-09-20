@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_filter :teacher_only , only: [:edit,:update,:destroy]
 
   # GET /books
   # GET /books.json
@@ -58,6 +60,12 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to books_url }
       format.json { head :no_content }
+    end
+  end
+
+  def teacher_only
+    if current_user.role != "Teacher"
+      redirect_to books_path
     end
   end
 
