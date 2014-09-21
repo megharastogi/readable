@@ -10,7 +10,9 @@ class UsersController < ApplicationController
 	end
 
 	def add_to_list
-		
+		list = List.create(:book_id => params[:book_id], :user_id => current_user.id)
+		flash[:success] = "Book has been added to list."
+		redirect_to  users_dashboard_path
 	end
 
 end

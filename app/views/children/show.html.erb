@@ -1,20 +1,16 @@
+<p id="notice"><%= notice %></p>
 
-<%if current_user %>
-  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
-<% end %>
-<br/>
-<%= render partial: "parent_nav" %>
-<br/>
-<br/>
-<%=form_tag "/users/search_results" do %>
-	Search <%=text_field_tag "search" %><%=select_tag "grade", "<option>6</option><option>5</option><option>4</option>".html_safe%>
-	<%=submit_tag "GO"%>
-<% end %>
-<br/>
-<br/>
+<p>
+  <strong>Name:</strong>
+  <%= @child.name %>
+</p>
 
-<%=link_to "Add Child", new_child_path%><br/>
+<p>
+  <strong>Grade:</strong>
+  <%= @child.grade %>
+</p>
 
+<h1>Your Reading List </h1>
 <% @books.each do |b|%>
 	<% if b.name == "Diary of a Wimpy Kid"%>
 		<%=image_tag("diary_of_wimpy_kid.jpg")%>
@@ -36,7 +32,9 @@
 	<%=b.name%><br/>
 	<%=b.description%><br/>
 	<%=b.grade%><br/>
-		<%= link_to "Add to List", user_add_to_list_path(:book_id => b.id)%><br/>
+		<%= link_to "Read Book", books_child_view_path(:id => b.id)%><br/>
 
 
 <% end %>
+<%#= link_to 'Edit', edit_child_path(@child) %> 
+<%#= link_to 'Back', children_path %>

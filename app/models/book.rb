@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
 	has_many :book_versions
 	has_many :questions
+	has_many :lists
 	require 'odyssey'
 
 	before_save :find_ri

@@ -1,4 +1,8 @@
 Readable::Application.routes.draw do
+  resources :children
+
+  resources :lists
+
   devise_for :users
   resources :questions
 
@@ -14,7 +18,10 @@ Readable::Application.routes.draw do
 
   match "/users/dashboard" => "users#dashboard", via: [:get]
   match "/users/search_results" => "users#search_results", via: [:post,:get]
-  match "/user/add_to_list" => "users#add_to_list", via: [:post]
+  match "/user/add_to_list" => "users#add_to_list", via: [:get]
+  match "/books/child_view" => "books#child_view", via: [:get]
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
