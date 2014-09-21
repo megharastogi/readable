@@ -1,0 +1,47 @@
+<div class="container mtb">
+	 	<div class="row">
+	 	
+	 		<! -- BLOG POSTS LIST -->
+	 		<div class="col-lg-12" style="margin:auto;position:relative;">
+				<h1><%=@book.name%> Questions</h1>
+				
+				<div id="book_content">
+					<%@questions.each do |q|%>
+						<div class="questions" style="margin:20px 0;">
+							<span style="font-weight:bold;"> Q : </span> <%=q.content%><br/>
+
+							<span style="font-weight:bold;"> A : </span> 	<br/>
+							<div class="radio">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							    <%=q.ans1%>
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							   <%=q.ans2%>
+							  </label>
+							</div>
+							<div class="radio disabled">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+							    <%=q.ans3%>
+							  </label>
+							</div>
+							<div class="radio disabled">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+							    <%=q.ans4%>
+							  </label>
+							</div>
+
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+
+		<%=link_to "Done" ,"/children/#{@child.id}",:class=>"btn btn-theme pull-right"%>
+</div>

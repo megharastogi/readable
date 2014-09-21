@@ -14,12 +14,12 @@
 top: 28px;">
 					 <%=select_tag "version_grade", options.html_safe , :class=>"form-control",:style=>"width:100px;float:left;"%><%=submit_tag "Change Level",:class=>"btn btn-theme",:style=>"margin-top:0px;"%>
 				</div>
-				<div id="book_content" style="white-space: pre-wrap;">
-					<%=@book.content%>
+				<div id="book_content_child_view" style="font-size:16px;">
+					<%=raw(@book.content)%>
 				</div>
 			</div>
 		</div>
 
 
-		<%=link_to "Next >" ,"#",:class=>"btn btn-theme pull-right"%>
+		<%=link_to "Next >" ,"/books/#{@book.id}/book_questions/#{@child.id}",:class=>"btn btn-theme pull-right"%>
 </div>

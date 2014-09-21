@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_book, only: [:show, :edit, :update, :destroy,:child_view,:fetch_other_book_version]
+  before_action :set_book, only: [:show, :edit, :update, :destroy,:child_view,:fetch_other_book_version,:book_questions]
   before_filter :teacher_only , only: [:edit,:update,:destroy]
 
   # GET /books
@@ -71,6 +71,11 @@ class BooksController < ApplicationController
 
   def child_view
     @child = Child.find(params[:child_id])
+  end
+
+  def book_questions
+    @child = Child.find(params[:child_id])
+    @questions = @book.questions
   end
 
   def fetch_other_book_version

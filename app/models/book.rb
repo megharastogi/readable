@@ -7,7 +7,6 @@ class Book < ActiveRecord::Base
 	before_save :find_ri
 
 	def find_ri
-		binding.pry
 		 self.content.lstrip.chop!
 		self.ri = Odyssey.flesch_kincaid_grade_level(self.content , all_stats = false) - 1
 	end
