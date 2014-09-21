@@ -8,6 +8,30 @@
 <br/>
 <br/>
 
+<%=text_field_tag "search" %>
+<br/>
+<br/>
+
 <% @books.each do |b|%>
-	<%=b.name%>
+	<% if b.name == "Diary of a Wimpy Kid"%>
+		<%=image_tag("diary_of_wimpy_kid.jpg")%>
+	<% elsif b.name == "Matilda"%>
+		<%=image_tag("matilda.jpg")%>	
+	<% elsif b.name == "The Bad Beginning (A Series of Unfortunate Events #1)"%>
+		<%=image_tag("thebadbeginning.jpg")%>	
+	<% elsif b.name == "Esperanza Rising"%>
+		<%=image_tag("esperanza_ rising.jpg")%>	
+	<% elsif b.name == "Ender's Game"%>
+		<%=image_tag("enders_game.jpg")%>	
+	<% elsif b.name == "Harry Potter and the Sorcerer's Stone"%>
+		<%=image_tag("harry_potter.jpg")%>	
+	<% elsif b.name == "Stargirl"%>
+		<%=image_tag("stargirl.jpg")%>	
+	<% elsif b.name == "Holes"%>
+		<%=image_tag("holes.jpg")%>	
+	<% end %><br/>
+	<%=b.name%><br/>
+	<%=b.description%><br/>
+	<%=b.grade%><br/>
+
 <% end %>
