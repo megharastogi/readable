@@ -26,9 +26,20 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-gem 'binding_of_caller'
-gem 'pry-rails'
-gem 'pry-debugger'
+
+group :development, :test do
+  gem 'rspec-rails',     '~> 2.14.0'
+  gem 'launchy',            '2.3.0'
+  gem 'selenium-webdriver'
+  gem 'pry-rails'
+  gem 'pry-debugger'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 
 #Gem Devise
 gem 'devise'
