@@ -1,12 +1,25 @@
+<div class="container mtb">
+	 	<div class="row">
+	 	
+	 		<! -- BLOG POSTS LIST -->
+	 		<div class="col-lg-12" style="margin:auto;position:relative;">
+				<h1><%=@book.name%></h1>
+				<%
+					options = "<option>#{@book.grade}</option>"
+					@book.book_versions.each do |b|
+						options =  options + "<option>#{b.grade}</option>"
+					end
+				%>
+				<div id ="level-changer" style="overflow:hidden;right: 33px;
+top: 28px;">
+					 <%=select_tag "version_grade", options.html_safe , :class=>"form-control",:style=>"width:100px;float:left;"%><%=submit_tag "Change Level",:class=>"btn btn-theme",:style=>"margin-top:0px;"%>
+				</div>
+				<div id="book_content" style="white-space: pre-wrap;">
+					<%=@book.content%>
+				</div>
+			</div>
+		</div>
 
-<%=@book.name%><br/>
-<%
-	options = "<option>#{@book.grade}</option>"
-	@book.book_versions.each do |b|
-		options =  options + "<option>#{b.grade}</option>"
-	end
-%>
-Grade:<%=select_tag "version_grade", options.html_safe%><br/>
-<div id="book_content">
-<%=@book.content%>
+
+		<%=link_to "Next >" ,"#",:class=>"btn btn-theme pull-right"%>
 </div>

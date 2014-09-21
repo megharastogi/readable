@@ -576,3 +576,7 @@ csmall2 {
   background-color: #00b3fe;
   border-color: #00b3fe;
 }
+
+#level-changer{
+	position: absolute;
+}
