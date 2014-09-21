@@ -3,11 +3,11 @@
   <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
 <% end %>
 <br/>
-
+<%= render partial: "parent_nav" %>
 <br/>
 <br/>
 <%=form_tag "/users/search_results" do %>
-	Search <%=text_field_tag "search" %><%=select_tag "grade", "<option>6</option><option>5</option><option>4</option>".html_safe%>
+	Search <%=text_field_tag "search" %><%=select_tag "grade", "<option>Grade</option><option>6</option><option>5</option><option>4</option>".html_safe%>
 	<%=submit_tag "GO"%>
 <% end %>
 <br/>
@@ -35,6 +35,8 @@
 	<%=b.description%><br/>
 	<%=b.grade%><br/>
 		<%= link_to "Add to List", user_add_to_list_path(:book_id => b.id)%><br/>
+<% end %>
 
-
+<%if @books.blank?%>
+	<p>Sorry we were not able to find any results.</p>
 <% end %>

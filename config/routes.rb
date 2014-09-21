@@ -13,7 +13,8 @@ Readable::Application.routes.draw do
   root 'static#index'
 
   match "/users/dashboard" => "users#dashboard", via: [:get]
-
+  match "/users/search_results" => "users#search_results", via: [:post,:get]
+  match "/user/add_to_list" => "users#add_to_list", via: [:post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
