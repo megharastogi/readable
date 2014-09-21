@@ -1,39 +1,44 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @child.name %>
-</p>
+<div class="container mtb">
+	 	<div class="row">
+	 	
+	 		<! -- BLOG POSTS LIST -->
+	 		<div class="col-lg-8">
+	 		<div style="margin-top:-21px;">
 
-<p>
-  <strong>Grade:</strong>
-  <%= @child.grade %>
-</p>
+		<h1>Your Reading List </h1>
 
-<h1>Your Reading List </h1>
-<% @books.each do |b|%>
-	<% if b.name == "Diary of a Wimpy Kid"%>
-		<%=image_tag("diary_of_wimpy_kid.jpg")%>
-	<% elsif b.name == "Matilda"%>
-		<%=image_tag("matilda.jpg")%>	
-	<% elsif b.name == "The Bad Beginning (A Series of Unfortunate Events #1)"%>
-		<%=image_tag("thebadbeginning.jpg")%>	
-	<% elsif b.name == "Esperanza Rising"%>
-		<%=image_tag("esperanza_ rising.jpg")%>	
-	<% elsif b.name == "Ender's Game"%>
-		<%=image_tag("enders_game.jpg")%>	
-	<% elsif b.name == "Harry Potter and the Sorcerer's Stone"%>
-		<%=image_tag("harry_potter.jpg")%>	
-	<% elsif b.name == "Stargirl"%>
-		<%=image_tag("stargirl.jpg")%>	
-	<% elsif b.name == "Holes"%>
-		<%=image_tag("holes.jpg")%>	
-	<% end %><br/>
-	<%=b.name%><br/>
-	<%=b.description%><br/>
-	<%=b.grade%><br/>
-		<%= link_to "Read Book", "/books/#{b.id}/child_view"%><br/>
+	<div class="book_container"> 
+		<% @books.each do |b|%>
+			<div class="book_box">
+				<% if b.name == "Diary of a Wimpy Kid"%>
+					<%=image_tag("diary_of_wimpy_kid.jpg")%>
+				<% elsif b.name == "Matilda"%>
+					<%=image_tag("matilda.jpg")%>	
+				<% elsif b.name == "The Bad Beginning (A Series of Unfortunate Events #1)"%>
+					<%=image_tag("thebadbeginning.jpg")%>	
+				<% elsif b.name == "Esperanza Rising"%>
+					<%=image_tag("esperanza_ rising.jpg")%>	
+				<% elsif b.name == "Ender's Game"%>
+					<%=image_tag("enders_game.jpg")%>	
+				<% elsif b.name == "Harry Potter and the Sorcerer's Stone"%>
+					<%=image_tag("harry_potter.jpg")%>	
+				<% elsif b.name == "Stargirl"%>
+					<%=image_tag("stargirl.jpg")%>	
+				<% elsif b.name == "Holes"%>
+					<%=image_tag("holes.jpg")%>	
+				<% end %><br/>
 
-
-<% end %>
-<%#= link_to 'Edit', edit_child_path(@child) %> 
-<%#= link_to 'Back', children_path %>
+				<div class="book_name"><%=b.name%></div>
+				<%=b.description%><br/>
+				<div class="book_grade">Grade: <%=b.grade%></div>
+					<div class="add_to_list_block">
+						<%= link_to "Read Book", "/books/#{b.id}/child_view/#{@child.id}",:class=>"btn btn-add-list add_button"%>
+					</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
+</div>

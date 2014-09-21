@@ -21,7 +21,7 @@ Readable::Application.routes.draw do
   match "/users/dashboard" => "users#dashboard", via: [:get]
   match "/users/search_results" => "users#search_results", via: [:post,:get]
   match "/user/add_to_list" => "users#add_to_list", via: [:get]
-  match "/books/:id/child_view" => "books#child_view", via: [:get]
+  match "/books/:id/child_view/:child_id" => "books#child_view", via: [:get]
   match "/books/:id/fetch_other_book_version" => "books#fetch_other_book_version", via: [:get]
 
 

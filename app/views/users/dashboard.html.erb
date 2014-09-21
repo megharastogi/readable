@@ -1,13 +1,18 @@
 
-<div style="width:800px;margin: 50px auto;">
-	<%=form_tag "/users/search_results" do %>
-		Search <%=text_field_tag "search" %><%=select_tag "grade", "<option>6</option><option>5</option><option>4</option>".html_safe%>
-		<%=submit_tag "GO"%>
+<div class="container mtb">
+	 	<div class="row">
+	 	
+	 		<! -- BLOG POSTS LIST -->
+	 		<div class="col-lg-8">
+	 		<div style="margin-top:-21px;">
+	<div style="overflow:hidden;margin:37px 24px">
+		<%=form_tag "/users/search_results" do %>
+		<%=text_field_tag "search" ,"",:placeholder=>"Tilte/Tag/Keywords",:class=>"form-control",:style=>"width:250px;margin-right:10px;float:left;" %>
+		<%=select_tag "grade", "<option>Select Grade</option><option>6</option><option>5</option><option>4</option>".html_safe,:class=>"form-control",:style=>"width:150px;margin-right:5px;float:left;"%>
+		<%=submit_tag "Search",:class=>"btn btn-theme",:style=>"margin-top: 0px;"%>
 	<% end %>
-	<br/>
-	<br/>
+	</div>
 
-	<%=link_to "Add Child", new_child_path, :class=>"btn btn-theme" %><br/>
 
 <div class="book_container"> 
 	<% @books.each do |b|%>
@@ -29,12 +34,61 @@
 		<% elsif b.name == "Holes"%>
 			<%=image_tag("holes.jpg")%>	
 		<% end %><br/>
-		<%=b.name%><br/>
-		<%=b.description%><br/>
-		<%=b.grade%><br/>
-			<%= link_to "Add to List", user_add_to_list_path(:book_id => b.id)%><br/>
 
+		<div class="book_name"><%=b.name%></div>
+		<%=b.description%><br/>
+		<div class="book_grade">Grade: <%=b.grade%></div>
+		<div class="add_to_list_block">
+			<%= link_to "Add to List", user_add_to_list_path(:book_id => b.id),:class=>"btn btn-add-list add_button"%>
+		</div>
 		</div>
 	<% end %>
 </div>
 </div>
+			
+			</div><! --/col-lg-8 -->
+	 		
+	 		
+	 		<! -- SIDEBAR -->
+	 		<div class="col-lg-4">
+		 		<h4><a href="/users/dashboard">Library</a></h4>
+				<h4><a href="library.html">Get New Books</a></h4>
+				<h4>	<%=link_to "Add Child", new_child_path%></h4>
+
+
+				<div class="hline"></div>
+		 		
+				<h4><a href="#">Reader Profiles</a></h4>
+					<ul class="popular-posts">
+						<% @children = current_user.children %>
+						<%if @children.count > 0 %>
+		                <li>
+		                    <a href="#"><%=image_tag("matilda.jpg" ,:style=>"height:100px;")%>	</a>
+		                    <p><h3><%= link_to @children[0].name, child_path(@children[0])%></h3></p>
+							<b>Last book read:</b> <a href="#">Matilda</a><br />
+							<b>Last logged in:</b> Saturday<br /><br /><br/><br/>
+							<div class="alert alert-dismissable alert-success">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								New report for <%= link_to @children[0].name, child_path(@children[0]),:class=>"alert-link"%> available!
+							</div>
+		                </li>
+		          <% end %>
+		          <% if @children.count > 1%>
+		                <li>
+		                    <a href="#"><%=image_tag("esperanza_ rising.jpg",:style=>"height:100px;")%></a>
+		                    <p><h3> <%= link_to @children[1].name, child_path(@children[1])%> </h3></p>
+							<b>Last book read:</b> <a href="#">Esperanza Rising</a><br />
+							<b>Last logged in:</b> Saturday<br /><br />
+		                </li>
+		          <% end %>
+		            </ul>
+				
+				<div class="hline"></div>
+				
+		 		<h4><a href="#">Help!</a></h4>
+		 		<h4><a href="#">Contact Us</a></h4>
+	 	</div><! --/row -->
+	 </div><! --/container -->
+
+
+

@@ -70,7 +70,7 @@ class BooksController < ApplicationController
   end
 
   def child_view
-
+    @child = Child.find(params[:child_id])
   end
 
   def fetch_other_book_version

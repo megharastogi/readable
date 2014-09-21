@@ -94,6 +94,7 @@ a:focus {
 .navbar-brand {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 900;
+	margin-top: 10px;
 }
 
 .navbar-header .navbar-brand {
@@ -116,7 +117,7 @@ a:focus {
 }
 
 .navbar-default {
-	background-color: #384452;
+	background: #384452;
 	border-color: transparent;
 }
 
@@ -530,7 +531,48 @@ csmall2 {
 .book_box{
 	width:30%;
 	float: left;
+	margin-left: 3%;
+	height:520px;
+	margin-bottom: 50px;
+	position: relative;
+}
+.book_box img{
+	width:100%;
+	height: 350px;
 }
 .book_container{
 	overflow: hidden;
+}
+.book_name{
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	margin: 10px 0;
+}
+.book_grade{
+	font-size: 12px;
+}
+.add_button{
+}
+.add_to_list_block{
+	position: absolute;
+	background: url("book-background.png") repeat;
+	width:100%;
+	text-align: center;
+	top:297px;
+}
+.btn-add-list{
+	color: #fff;
+  background-color: #00b3fe;
+  border-color: #00b3fe;
+  margin:10px 0 ;
+}
+.btn-add-list:hover,
+.btn-add-list:focus,
+.btn-add-list:active,
+.btn-add-list.active,
+{
+  color: #fff;
+  background-color: #00b3fe;
+  border-color: #00b3fe;
 }
