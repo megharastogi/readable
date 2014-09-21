@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy,:child_view,:fetch_other_book_version]
   before_filter :teacher_only , only: [:edit,:update,:destroy]
 
   # GET /books
@@ -70,7 +70,17 @@ class BooksController < ApplicationController
   end
 
   def child_view
-    
+
+  end
+
+  def fetch_other_book_version
+    @content =  @book.book_versions.where(:grade => params[:select_tag_value]).first
+    if @content.blank?
+      @content =  @book
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

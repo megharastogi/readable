@@ -32,7 +32,7 @@
 	<%=b.name%><br/>
 	<%=b.description%><br/>
 	<%=b.grade%><br/>
-		<%= link_to "Read Book", books_child_view_path(:id => b.id)%><br/>
+		<%= link_to "Read Book", "/books/#{b.id}/child_view"%><br/>
 
 
 <% end %>

@@ -1,0 +1,12 @@
+
+<%=@book.name%><br/>
+<%
+	options = "<option>#{@book.grade}</option>"
+	@book.book_versions.each do |b|
+		options =  options + "<option>#{b.grade}</option>"
+	end
+%>
+Grade:<%=select_tag "version_grade", options.html_safe%><br/>
+<div id="book_content">
+<%=@book.content%>
+</div>
