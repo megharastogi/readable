@@ -16,7 +16,7 @@ Readable::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static#index'
+  root :to => redirect('/index.html')
 
   match "/users/dashboard" => "users#dashboard", via: [:get]
   match "/users/search_results" => "users#search_results", via: [:post,:get]

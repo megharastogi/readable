@@ -1,42 +1,40 @@
 
-<%if current_user %>
-  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
-<% end %>
-<br/>
-<%= render partial: "parent_nav" %>
-<br/>
-<br/>
-<%=form_tag "/users/search_results" do %>
-	Search <%=text_field_tag "search" %><%=select_tag "grade", "<option>6</option><option>5</option><option>4</option>".html_safe%>
-	<%=submit_tag "GO"%>
-<% end %>
-<br/>
-<br/>
+<div style="width:800px;margin: 50px auto;">
+	<%=form_tag "/users/search_results" do %>
+		Search <%=text_field_tag "search" %><%=select_tag "grade", "<option>6</option><option>5</option><option>4</option>".html_safe%>
+		<%=submit_tag "GO"%>
+	<% end %>
+	<br/>
+	<br/>
 
-<%=link_to "Add Child", new_child_path%><br/>
+	<%=link_to "Add Child", new_child_path, :class=>"btn btn-theme" %><br/>
 
-<% @books.each do |b|%>
-	<% if b.name == "Diary of a Wimpy Kid"%>
-		<%=image_tag("diary_of_wimpy_kid.jpg")%>
-	<% elsif b.name == "Matilda"%>
-		<%=image_tag("matilda.jpg")%>	
-	<% elsif b.name == "The Bad Beginning (A Series of Unfortunate Events #1)"%>
-		<%=image_tag("thebadbeginning.jpg")%>	
-	<% elsif b.name == "Esperanza Rising"%>
-		<%=image_tag("esperanza_ rising.jpg")%>	
-	<% elsif b.name == "Ender's Game"%>
-		<%=image_tag("enders_game.jpg")%>	
-	<% elsif b.name == "Harry Potter and the Sorcerer's Stone"%>
-		<%=image_tag("harry_potter.jpg")%>	
-	<% elsif b.name == "Stargirl"%>
-		<%=image_tag("stargirl.jpg")%>	
-	<% elsif b.name == "Holes"%>
-		<%=image_tag("holes.jpg")%>	
-	<% end %><br/>
-	<%=b.name%><br/>
-	<%=b.description%><br/>
-	<%=b.grade%><br/>
-		<%= link_to "Add to List", user_add_to_list_path(:book_id => b.id)%><br/>
+<div class="book_container"> 
+	<% @books.each do |b|%>
+		<div class="book_box">
+		<% if b.name == "Diary of a Wimpy Kid"%>
+			<%=image_tag("diary_of_wimpy_kid.jpg")%>
+		<% elsif b.name == "Matilda"%>
+			<%=image_tag("matilda.jpg")%>	
+		<% elsif b.name == "The Bad Beginning (A Series of Unfortunate Events #1)"%>
+			<%=image_tag("thebadbeginning.jpg")%>	
+		<% elsif b.name == "Esperanza Rising"%>
+			<%=image_tag("esperanza_ rising.jpg")%>	
+		<% elsif b.name == "Ender's Game"%>
+			<%=image_tag("enders_game.jpg")%>	
+		<% elsif b.name == "Harry Potter and the Sorcerer's Stone"%>
+			<%=image_tag("harry_potter.jpg")%>	
+		<% elsif b.name == "Stargirl"%>
+			<%=image_tag("stargirl.jpg")%>	
+		<% elsif b.name == "Holes"%>
+			<%=image_tag("holes.jpg")%>	
+		<% end %><br/>
+		<%=b.name%><br/>
+		<%=b.description%><br/>
+		<%=b.grade%><br/>
+			<%= link_to "Add to List", user_add_to_list_path(:book_id => b.id)%><br/>
 
-
-<% end %>
+		</div>
+	<% end %>
+</div>
+</div>

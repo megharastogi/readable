@@ -1,14 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Readable</title>
+	<meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Readable - Books every kid can read.</title>
+
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+      <link href="/assets/bootstrap.css" rel="stylesheet">
+    <link href="/assets/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
 </head>
 <body>
 
-<%= yield %>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Readable</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+      <% if current_user %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Parent Name <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+          <% current_user.children.each do |c|%>
+            <li>
 
+            <a href="<%=child_path(c)%>"><i class="fa fa-user"></i> <%=c.name%></a>
+
+            </li>
+          <% end %>
+						<li><a href="blog.html"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete%></li>
+
+          </ul>
+        </li>
+      <%else %>
+      	<li class="dropdown">
+          <%= link_to 'Login', "/users/sign_in"%>
+        </li>
+      <% end  %>  
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div>
+	<%= yield %>
+</div>
+
+<div id="footerwrap">
+	 	<div class="container">
+		 	<div class="row">
+		 		<div class="col-lg-4">
+		 			<h4>About Readable</h4>
+		 			<div class="hline-w"></div>
+		 			<p>This is the about section, we need to summarize what we are & what we do.</p>
+		 		</div>
+		 		<div class="col-lg-4">
+		 			<h4>Chat with us</h4>
+		 			<div class="hline-w"></div>
+		 			<p>
+		 				<a href="#"><i class="fa fa-facebook"></i></a>
+		 				<a href="#"><i class="fa fa-twitter"></i></a>
+		 			</p>
+		 		</div>
+		 		<div class="col-lg-4">
+		 			<h4>Where we call home</h4>
+		 			<div class="hline-w"></div>
+		 			<p>
+						123 Address Way<br />
+						Seattle WA<br />
+						98101
+		 			</p>
+		 		</div>
+		 	
+		 	</div>
+	 	</div>
+</div>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/assets/bootstrap.min.js"></script>
+	<script src="/assets/retina-1.1.0.js"></script>
+	<script src="/assets/jquery.hoverdir.js"></script>
+	<script src="/assets/jquery.hoverex.min.js"></script>
+	<script src="/assets/jquery.prettyPhoto.js"></script>
+  	<script src="/assets/jquery.isotope.min.js"></script>
+  	<script src="/assets/custom.js"></script>
 </body>
 </html>
